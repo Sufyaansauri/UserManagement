@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Welcome to Our Platform, <span th:text="${username}">User</span>!</h2>
+    <p>Your OTP Code: <span th:text="${otp}">otp</span></p>
+    <b th:text="${email}">email@example.com</b></p>
+    <p>Best regards,<br/>The Team</p>
+</div>
+</body>
+</html>
