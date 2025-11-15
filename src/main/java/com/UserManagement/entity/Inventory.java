@@ -12,11 +12,11 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String itemName;
-    private int quantity;
-    private double price;
+    private Integer quantity;
+    private Double price;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "productId", nullable = false, referencedColumnName = "id")
-    private Product products;
+    private Product product;
 
 }

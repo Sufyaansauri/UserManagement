@@ -84,7 +84,7 @@ public class CategoryService {
               response.setMessage("Product with id " + id + " not found");
               return response;
           }
-          Category category = categoryRepository.findById(id);
+          Category category = categoryRepository.findCategoryById(id);
           CategoryDTO setResponse = CategoryDTO.setResponse(category);
 
           response.setCode("200");
@@ -113,16 +113,16 @@ public class CategoryService {
         return response;
         }
 
-        public Response getCategoryById(Long categoryId) {
+        public Response getCategoryById(Long id) {
             Response response = new Response();
             try {
-                if (!categoryRepository.existsById(categoryId) || categoryId == null) {
+                if (!categoryRepository.existsById(id) || id == null) {
                     response.setCode("400");
-                    response.setMessage("Category with id " + categoryId + " not found");
+                    response.setMessage("Category with id " + id + " not found");
                     return response;
                 }
 
-                Category category = categoryRepository.findCategoryById(categoryId);
+                Category category = categoryRepository.findCategoryById(id);
                 CategoryDTO setResponse = CategoryDTO.setResponse(category);
 
                 response.setCode("200");

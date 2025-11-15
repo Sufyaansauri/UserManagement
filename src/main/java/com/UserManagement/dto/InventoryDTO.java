@@ -21,7 +21,7 @@ public class InventoryDTO {
         inventoryDTO.setItemName(inventory.getItemName());
         inventoryDTO.setQuantity(inventory.getQuantity());
         inventoryDTO.setPrice(inventory.getPrice());
-
+        inventoryDTO.setProductId(inventory.getProduct().getId());
         return inventoryDTO;
     }
 }

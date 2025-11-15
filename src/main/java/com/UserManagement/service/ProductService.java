@@ -85,7 +85,7 @@ public class ProductService {
                 return response;
             }
 
-            Product product = productRepository.findByProductId(id);
+            Product product = productRepository.findProductById(id);
             product.setName(productDTO.getName());
             product.setPrice(productDTO.getPrice());
             product.setCategory(product.getCategory());
@@ -110,7 +110,7 @@ public class ProductService {
                 response.setMessage("Product with id " + id + " not found");
                 return response;
             }
-            Product deleteProduct = productRepository.findByProductId(id);
+            Product deleteProduct = productRepository.findProductById(id);
             productRepository.delete(deleteProduct);
             response.setCode("200");
             response.setMessage("Product deleted successfully");
@@ -132,7 +132,7 @@ public class ProductService {
                 return response;
             }
 
-            Product product = productRepository.findByProductId(id);
+            Product product = productRepository.findProductById(id);
             ProductDTO setResponse = ProductDTO.setResponse(product);
 
 
