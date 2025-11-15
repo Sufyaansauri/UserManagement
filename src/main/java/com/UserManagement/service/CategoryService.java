@@ -76,15 +76,15 @@ public class CategoryService {
         return response;
     }
 
-    public Response deleteCategory(Long categoryId){
+    public Response deleteCategory(Long id){
         Response response = new Response();
         try {
-          if(!categoryRepository.existsById(categoryId) || categoryId == null){
+          if(!categoryRepository.existsById(id) || id == null){
               response.setCode("400");
-              response.setMessage("Product with id " + categoryId + " not found");
+              response.setMessage("Product with id " + id + " not found");
               return response;
           }
-          Category category = categoryRepository.findByCategoryId(categoryId);
+          Category category = categoryRepository.findById(id);
           CategoryDTO setResponse = CategoryDTO.setResponse(category);
 
           response.setCode("200");
@@ -122,7 +122,7 @@ public class CategoryService {
                     return response;
                 }
 
-                Category category = categoryRepository.findByCategoryId(categoryId);
+                Category category = categoryRepository.findCategoryById(categoryId);
                 CategoryDTO setResponse = CategoryDTO.setResponse(category);
 
                 response.setCode("200");
