@@ -1,9 +1,11 @@
 package com.UserManagement.service;
 
 import com.UserManagement.dto.ProductDTO;
+import com.UserManagement.entity.Category;
 import com.UserManagement.entity.Product;
 import com.UserManagement.exceptions.Response;
 import com.UserManagement.exceptions.UMSResponse;
+import com.UserManagement.repository.CategoryRepository;
 import com.UserManagement.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     public Response createProduct(ProductDTO productDTO) {
         Response response = new Response();
@@ -44,9 +49,13 @@ public class ProductService {
                 return response;
             }
 
+            Category category = categoryRepository.findById(productDTO.getCategoryId())
+                    .orElseThrow(() -> new RuntimeException("Category not found"));
+
             product.setName(productDTO.getName());
             product.setPrice(productDTO.getPrice());
-            product.setCategory(product.getCategory());
+
+            product.setCategory(category);
 
             Product savedProduct = productRepository.save(product);
             ProductDTO setResponse = ProductDTO.setResponse(savedProduct);
