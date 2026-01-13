@@ -3,6 +3,7 @@ package com.UserManagement.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+
 @Entity
 @Data
 @Table(name = "category")

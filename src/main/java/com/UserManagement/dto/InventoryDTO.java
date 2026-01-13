@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 public class InventoryDTO {
     private Long id;
     private String itemName;
-    private int quantity;
-    private double price;
+    private Integer quantity;
+    private String location;
     private Long productId;
 
     public static InventoryDTO setResponse(Inventory inventory) {
@@ -20,7 +20,7 @@ public class InventoryDTO {
         inventoryDTO.setId(inventory.getId());
         inventoryDTO.setItemName(inventory.getItemName());
         inventoryDTO.setQuantity(inventory.getQuantity());
-        inventoryDTO.setPrice(inventory.getPrice());
+        inventoryDTO.setLocation(inventory.getLocation());
         inventoryDTO.setProductId(inventory.getProduct().getId());
         return inventoryDTO;
     }

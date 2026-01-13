@@ -79,17 +79,17 @@ public class CategoryService {
     public Response deleteCategory(Long id){
         Response response = new Response();
         try {
-          if(!categoryRepository.existsById(id) || id == null){
+          if(id == null || !categoryRepository.existsById(id)){
               response.setCode("400");
               response.setMessage("Product with id " + id + " not found");
               return response;
           }
           Category category = categoryRepository.findCategoryById(id);
-          CategoryDTO setResponse = CategoryDTO.setResponse(category);
+          categoryRepository.deleteById(id);
 
           response.setCode("200");
           response.setMessage("Category deleted successfully");
-          response.setData("category", setResponse);
+          response.setData("category", category);
 
         }catch(Exception e) {
             e.printStackTrace();

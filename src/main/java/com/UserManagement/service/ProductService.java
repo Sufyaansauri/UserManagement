@@ -97,10 +97,12 @@ public class ProductService {
             Product product = productRepository.findProductById(id);
             product.setName(productDTO.getName());
             product.setPrice(productDTO.getPrice());
-            product.setCategory(product.getCategory());
+            Category category = categoryRepository .findById(productDTO.getCategoryId())
+                    .orElseThrow(() -> new RuntimeException("Category not found"));
+
+            product.setCategory(category);
 
             Product updatedProduct = productRepository.save(product);
-
             response.setCode("200");
             response.setMessage("Product updated successfully");
             response.setData("product", updatedProduct);
@@ -135,7 +137,7 @@ public class ProductService {
     public Response getProductById(Long id){
         Response response = new Response();
         try {
-            if (!productRepository.existsById(id) || id == null) {
+            if (!productRepository.existsById(id)) {
                 response.setResponse(UMSResponse.PRODUCT_NOT_FOUND);
                 response.setMessage("Product with id " + id + " not found");
                 return response;

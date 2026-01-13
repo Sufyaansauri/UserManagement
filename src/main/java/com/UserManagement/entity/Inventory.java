@@ -13,7 +13,7 @@ public class Inventory {
     private Long id;
     private String itemName;
     private Integer quantity;
-    private Double price;
+    private String location;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "productId", nullable = false, referencedColumnName = "id")

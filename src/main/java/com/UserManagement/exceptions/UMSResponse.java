@@ -21,7 +21,8 @@ public enum UMSResponse{
     PRODUCT_ALREADY_EXISTS("Product already exists","409"),
     PRODUCT_CREATED_SUCCESSFULLY("Product created successfully","201"),
     PRODUCT_NOT_FOUND("Product not found","404"),
-    INTERNAL_SERVER_ERROR("Internal server error","500");
+    INTERNAL_SERVER_ERROR("Internal server error","500"),
+    BAD_REQUEST("Bad Request","403");
 
 
     private final String message;
